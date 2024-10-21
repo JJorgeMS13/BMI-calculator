@@ -5,6 +5,7 @@ const containerInput2 = document.getElementById('container-input2');
 const score = document.getElementById('score');
 const rangeElement = document.getElementById('range');
 const classificationElement = document.getElementById('classification');
+const paragraph = document.getElementById('paragraph');
 
 function createElement(inputOptions) {
 
@@ -44,6 +45,10 @@ function createElement(inputOptions) {
 }
 
 function checkSelected() {
+    classificationElement.textContent = "";
+    rangeElement.textContent = "";
+    paragraph.textContent = "Enter your height and weight and you'll see your BMI result here.";
+    score.textContent = "0.0";
     clearElementHMTL(containerInput1);
     clearElementHMTL(containerInput2);
     if (metric.checked) {
@@ -102,51 +107,56 @@ function calculateRangeWeightLbs(imc, height) {
     return Math.round(range * 10) / 10;
 }
 function fillElement(valueHeight, valueWeight, option) {
-    const paragraph = document.getElementById('paragraph');
-    let bmi = 0;   
-    let minWeight = 0;
-    let maxWeight = 0;
-    let unitMeasurement = ''
     
-    if (option === 'metric') {
-        bmi = calculateBMIMetric(valueHeight, valueWeight);
-        minWeight = calculateRangeWeight(18.5, valueHeight);
-        maxWeight = calculateRangeWeight(24.9, valueHeight);
-        unitMeasurement = 'kgs';
-        rangeElement.textContent = `Your ideal weight is between ${minWeight} ${unitMeasurement} - ${maxWeight} ${unitMeasurement}`;
-    } else if (option === 'imperialLbs'){
-        bmi = calculateBMImperial(valueHeight, valueWeight);
-        minWeight = calculateRangeWeightLbs(18.5, valueHeight);
-        maxWeight = calculateRangeWeightLbs(24.9, valueHeight);
-        unitMeasurement = 'lbs';
-        rangeElement.textContent = `Your ideal weight is between ${minWeight} ${unitMeasurement} - ${maxWeight} ${unitMeasurement}`;
-    } else if (option === 'imperialSt'){
-        let weightStMin = 0;
-        let weightStMax = 0;
-        /* Convertir  stones a lbs*/
-        valueWeight =  valueWeight * 14;
-        /* Convertir pies a pulgadas */
-        valueHeight = valueHeight * 12;
+    if (valueHeight === "0" || valueWeight === "0" || valueHeight === '' || valueWeight === '') {
+        return;
+    } else {
         
-        bmi = calculateBMImperial(valueHeight, valueWeight);
-        minWeight = calculateRangeWeightLbs(18.5, valueHeight);
-        weightStMin = Math.round((minWeight / 14) * 10) / 10;
+        let bmi = 0;   
+        let minWeight = 0;
+        let maxWeight = 0;
+        let unitMeasurement = ''
+        
+        if (option === 'metric') {
+            bmi = calculateBMIMetric(valueHeight, valueWeight);
+            minWeight = calculateRangeWeight(18.5, valueHeight);
+            maxWeight = calculateRangeWeight(24.9, valueHeight);
+            unitMeasurement = 'kgs';
+            rangeElement.textContent = `Your ideal weight is between ${minWeight} ${unitMeasurement} - ${maxWeight} ${unitMeasurement}`;
+        } else if (option === 'imperialLbs'){
+            bmi = calculateBMImperial(valueHeight, valueWeight);
+            minWeight = calculateRangeWeightLbs(18.5, valueHeight);
+            maxWeight = calculateRangeWeightLbs(24.9, valueHeight);
+            unitMeasurement = 'lbs';
+            rangeElement.textContent = `Your ideal weight is between ${minWeight} ${unitMeasurement} - ${maxWeight} ${unitMeasurement}`;
+        } else if (option === 'imperialSt'){
+            let weightStMin = 0;
+            let weightStMax = 0;
+            /* Convertir  stones a lbs*/
+            valueWeight =  valueWeight * 14;
+            /* Convertir pies a pulgadas */
+            valueHeight = valueHeight * 12;
+            
+            bmi = calculateBMImperial(valueHeight, valueWeight);
+            minWeight = calculateRangeWeightLbs(18.5, valueHeight);
+            weightStMin = Math.round((minWeight / 14) * 10) / 10;
 
-        maxWeight = calculateRangeWeightLbs(24.9, valueHeight);
-        weightStMax = Math.round((maxWeight  /14) * 10) / 10;
-        rangeElement.textContent = `Your ideal weight is between ${minWeight} lbs ${weightStMin} st - ${maxWeight} lbs ${weightStMax} st`;
-    }
-    score.textContent = bmi;
+            maxWeight = calculateRangeWeightLbs(24.9, valueHeight);
+            weightStMax = Math.round((maxWeight  /14) * 10) / 10;
+            rangeElement.textContent = `Your ideal weight is between ${minWeight} lbs ${weightStMin} st - ${maxWeight} lbs ${weightStMax} st`;
+        }
+        score.textContent = bmi;
 
 
-    let text = "Your BMI suggests you're ";
-    paragraph.textContent = '';
-    if (valueWeight >= minWeight  && valueWeight <= maxWeight) {
-        classificationElement.textContent = text + 'a healthy weight.';
-    } else if (valueWeight < minWeight){
-        classificationElement.textContent = text + 'a low weight.';
-    } else if (valueWeight > maxWeight){
-        classificationElement.textContent = text + 'a high weight.';
+        let text = "Your BMI suggests you're ";
+        paragraph.textContent = '';
+        if (valueWeight >= minWeight  && valueWeight <= maxWeight) {
+            classificationElement.textContent = text + 'a healthy weight.';
+        } else if (valueWeight < minWeight){
+            classificationElement.textContent = text + 'a low weight.';
+        } else if (valueWeight > maxWeight){
+            classificationElement.textContent = text + 'a high weight.';
+        }
     }
 }
 function noNumberNegative(element) {
@@ -158,15 +168,18 @@ handlerRadio();
 
 window.onload = function() {
     metric.checked = true;
-
+    
     //crear y despachar un evento change.
     const event = new Event('change');
     metric.dispatchEvent(event);
+    getInputMetric();
 
+}
+function getInputMetric() {
     const inputCm = document.getElementById('cm');
     const inputKg = document.getElementById('kg');
 
-    inputCm.addEventListener('input', () => {    
+    inputCm.addEventListener('input', () => {
         noNumberNegative(inputCm);
         let valuCM = inputCm.value;
         let valuKg = inputKg.value;
@@ -220,7 +233,9 @@ function getInputImperial() {
 
     }
 }
+metric.addEventListener('change', () => {
+    getInputMetric();
+});
 imperial.addEventListener('change', () => {
-    
     getInputImperial();
 });
