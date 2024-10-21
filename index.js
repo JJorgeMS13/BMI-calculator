@@ -28,7 +28,9 @@ function createElement(inputOptions) {
 
         spanMedida.textContent = inputOptions[index].measurement;
 
-
+        span.addEventListener('click', () => {
+            input.focus();
+        });
         p.appendChild(label);
         span.appendChild(input);
         span.appendChild(spanMedida);
