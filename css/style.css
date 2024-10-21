@@ -1,0 +1,577 @@
+@font-face {
+  font-family: "Inter", sans-serif;
+  src: url("../assets/fonts/Inter-VariableFont_slnt,wght.ttf");
+}
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-size: 1.6rem;
+}
+
+/* Placehorder para poner estilos genericos a los input */
+main .container-calculator .card-calculator .card-calculator__data div p .input-group {
+  border: 1px solid #5E6E85;
+  border-radius: 1.2rem;
+  padding: 2rem 2.4rem;
+  background-color: white;
+  height: 6.9rem;
+  transition: border-color 0.3s ease;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 7.2rem;
+  position: relative;
+}
+main::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 64rem;
+  background-image: linear-gradient(to bottom right, #D6FCFE, #D6E6FE);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 0 0 3.5rem 3.5rem;
+  z-index: -1;
+}
+main .container-calculator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.4rem;
+  margin: 0 2.4rem;
+}
+main .container-calculator .logo {
+  margin-top: 2.4rem;
+  width: 4rem;
+  height: 4rem;
+}
+main .container-calculator .logo img {
+  height: 100%;
+  width: 100%;
+}
+main .container-calculator .card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+main .container-calculator .card-info .card-info__title {
+  color: #253347;
+  text-align: center;
+  font-size: 4.8rem;
+  font-weight: 600;
+}
+main .container-calculator .card-info .card-info__paragraph {
+  color: #5E6E85;
+  font-weight: 400;
+}
+main .container-calculator .card-calculator {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  background-color: white;
+  border-radius: 1.6rem;
+  padding: 2.4rem;
+  box-shadow: 16px 32px 56px rgba(143, 174, 207, 0.25);
+}
+main .container-calculator .card-calculator .card-calculator__title {
+  color: #253347;
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+main .container-calculator .card-calculator .card-calculator__system-measurement {
+  border: none;
+  display: flex;
+  gap: 2.4rem;
+}
+main .container-calculator .card-calculator .card-calculator__system-measurement legend {
+  position: absolute;
+  width: 0.1rem;
+  height: 0.1rem;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+main .container-calculator .card-calculator .card-calculator__system-measurement p {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+  width: 12.8rem;
+}
+main .container-calculator .card-calculator .card-calculator__system-measurement p label {
+  color: #253347;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+main .container-calculator .card-calculator .card-calculator__system-measurement p input[type=radio] {
+  appearance: none;
+  padding: 0;
+  border: 1px solid #5E6E85;
+  border-radius: 50%;
+  height: 3.1rem;
+  width: 3.1rem;
+  outline: none;
+  position: relative;
+  transition: border-color 0.3s ease;
+}
+main .container-calculator .card-calculator .card-calculator__system-measurement p input[type=radio]:focus, main .container-calculator .card-calculator .card-calculator__system-measurement p input[type=radio]:hover {
+  border-color: #345FF6;
+  background-color: #D8E2E7;
+  cursor: pointer;
+}
+main .container-calculator .card-calculator .card-calculator__system-measurement p input[type=radio]:checked {
+  border: none;
+  background-color: #D8E2E7;
+}
+main .container-calculator .card-calculator .card-calculator__system-measurement p input[type=radio]:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #345FF6;
+  border-radius: 50%;
+}
+main .container-calculator .card-calculator .card-calculator__data {
+  display: flex;
+  gap: 1.6rem;
+  flex-direction: column;
+}
+main .container-calculator .card-calculator .card-calculator__data div {
+  display: flex;
+  gap: 1rem;
+}
+main .container-calculator .card-calculator .card-calculator__data div p {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+main .container-calculator .card-calculator .card-calculator__data div p label {
+  color: #5E6E85;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+main .container-calculator .card-calculator .card-calculator__data div p .input-group {
+  display: flex;
+  gap: 2.4rem;
+}
+main .container-calculator .card-calculator .card-calculator__data div p .input-group:focus-within, main .container-calculator .card-calculator .card-calculator__data div p .input-group:hover {
+  border: 2px solid #345FF6;
+  cursor: pointer;
+}
+main .container-calculator .card-calculator .card-calculator__data div p .input-group input {
+  border: none;
+  outline: none;
+  color: #253347;
+  font-size: 2.4rem;
+  font-weight: 600;
+  width: 100%;
+}
+main .container-calculator .card-calculator .card-calculator__data div p .input-group span {
+  color: #345FF6;
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+main .container-calculator .card-calculator .card-score {
+  background-color: #345FF6;
+  border-radius: 1.6rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  padding: 3.2rem;
+}
+main .container-calculator .card-calculator .card-score div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+main .container-calculator .card-calculator .card-score div .card-score__title {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+main .container-calculator .card-calculator .card-score div h2 {
+  font-size: 4.8rem;
+  font-weight: 600;
+}
+main .container-calculator .card-calculator .card-score .card-score__paragraph {
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 150%;
+}
+main .container-description-BMI {
+  display: flex;
+  flex-direction: column;
+  gap: 4.8rem;
+}
+main .container-description-BMI .card-img {
+  width: 100%;
+  height: 35.439rem;
+}
+main .container-description-BMI .card-img figure {
+  width: 100%;
+  height: 100%;
+}
+main .container-description-BMI .card-img figure img {
+  width: 100%;
+  height: 100%;
+}
+main .container-description-BMI .card-result-means {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  margin: 0 2.8rem;
+}
+main .container-description-BMI .card-result-means .card-result-means__title {
+  color: #253347;
+  font-size: 3.2rem;
+  font-weight: 600;
+}
+main .container-description-BMI .card-result-means .card-result-means__description {
+  color: #5E6E85;
+  line-height: 150%;
+  letter-spacing: 2%;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+main .health-tips {
+  background: linear-gradient(to bottom right, rgba(214, 252, 254, 0.4), rgba(214, 230, 254, 0.2));
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding: 5.6rem 2.4rem;
+}
+main .health-tips .health-tips-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3.2rem;
+}
+main .health-tips .health-tips-card .health-tips-card__icon {
+  width: 6.4rem;
+  height: 6.4rem;
+}
+main .health-tips .health-tips-card .health-tips-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+main .health-tips .health-tips-card .health-tips-card__info .health-tips-card__title {
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: #253347;
+}
+main .health-tips .health-tips-card .health-tips-card__info .health-tips-card__paragraph {
+  color: #5E6E85;
+  line-height: 150%;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+main .limitations-Bmi {
+  display: flex;
+  flex-direction: column;
+  gap: 5.6rem;
+  padding: 2.4rem;
+}
+main .limitations-Bmi .card-info-limitations {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+main .limitations-Bmi .card-info-limitations .card-info-limitations__title {
+  color: #253347;
+  font-size: 3.2rem;
+  font-weight: 600;
+  line-height: 110%;
+}
+main .limitations-Bmi .card-info-limitations .card-info-limitations__paragraph {
+  text-align: center;
+  color: #5E6E85;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 150%;
+}
+main .limitations-Bmi .characteristic {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+main .limitations-Bmi .characteristic .characteristic-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  background-color: white;
+  border-radius: 1.6rem;
+  padding: 2.4rem;
+  box-shadow: 16px 32px 56px 0 rgba(143, 174, 207, 0.25);
+}
+main .limitations-Bmi .characteristic .characteristic-card .characteristic-card__header {
+  align-items: center;
+  display: flex;
+  gap: 1.6rem;
+}
+main .limitations-Bmi .characteristic .characteristic-card .characteristic-card__header .characteristic-card__icon {
+  width: 3.2rem;
+  height: 3.2rem;
+}
+main .limitations-Bmi .characteristic .characteristic-card .characteristic-card__header .characteristic-card__title {
+  color: main .limitations-Bmi .characteristic .characteristic-card .characteristic-card__header .characteristic-card__title #253347;
+  font-size: 2rem;
+  font-weight: 600;
+}
+main .limitations-Bmi .characteristic .characteristic-card .characteristic-card__paragraph {
+  color: #5E6E85;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+@media screen and (min-width: 48rem) {
+  main .container-calculator {
+    margin: 0 5rem;
+  }
+  main .container-calculator .logo {
+    margin-top: 4rem;
+  }
+  main .container-calculator .card-info {
+    text-align: center;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  main .container-calculator .card-info .card-info__title {
+    width: 58%;
+  }
+  main .container-calculator .card-calculator {
+    gap: 3.2rem;
+    padding: 3.2rem;
+  }
+  main .container-calculator .card-calculator .card-calculator__data {
+    flex-direction: row;
+  }
+  main .container-calculator .card-calculator .card-score {
+    align-items: center;
+    border-radius: 1.6rem 99.9rem 99.9rem 1.6rem;
+    flex-direction: row;
+  }
+  main .container-calculator .card-calculator .card-score div {
+    width: 90%;
+  }
+  main .container-description-BMI {
+    flex-direction: row;
+    gap: 7.5rem;
+  }
+  main .container-description-BMI .card-img {
+    margin-left: -7rem;
+  }
+  main .container-description-BMI .card-result-means {
+    margin: 0;
+    margin-right: 4rem;
+    max-width: 33.1rem;
+  }
+  main .limitations-Bmi {
+    text-align: center;
+    padding: 4.1rem;
+  }
+  main .limitations-Bmi .characteristic {
+    display: grid;
+    row-gap: 2.4rem;
+    column-gap: 1.5rem;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+  }
+  main .limitations-Bmi .characteristic .card-gender {
+    grid-column: 1/7;
+    grid-row: 1/5;
+  }
+  main .limitations-Bmi .characteristic .card-age {
+    grid-column: 7/-1;
+    grid-row: 1/5;
+  }
+  main .limitations-Bmi .characteristic .card-muscle {
+    grid-column: 1/7;
+    grid-row: 5/9;
+  }
+  main .limitations-Bmi .characteristic .card-pregnancy {
+    grid-column: 7/-1;
+    grid-row: 5/9;
+  }
+  main .limitations-Bmi .characteristic .card-race {
+    grid-column: 4/10;
+    grid-row: 9/-1;
+  }
+}
+@media screen and (min-width: 64rem) {
+  main .container-description-BMI {
+    margin: 3rem;
+  }
+  main .container-description-BMI .card-img {
+    margin-left: 0;
+  }
+  main .health-tips {
+    border-radius: 3.5rem;
+    margin: 3rem;
+  }
+}
+@media screen and (min-width: 90rem) {
+  main::before {
+    height: 73.7rem;
+    width: 97.8rem;
+  }
+  main .container-calculator {
+    display: grid;
+    gap: 0;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    max-width: 127.6rem;
+    margin: 0;
+    margin-bottom: 10rem;
+  }
+  main .container-calculator .logo {
+    margin: 0;
+    margin-left: 5rem;
+    grid-row: 2/3;
+    grid-column: 1/2;
+  }
+  main .container-calculator .card-info {
+    max-width: 56.4rem;
+    margin-left: 5rem;
+    gap: 3.5rem;
+    align-items: flex-start;
+    text-align: left;
+    grid-row: 4/-1;
+    grid-column: 1/7;
+  }
+  main .container-calculator .card-info .card-info__title {
+    text-align: left;
+    font-size: 6.4rem;
+    width: 90%;
+  }
+  main .container-calculator .card-info .card-info__paragraph {
+    max-width: 44.3rem;
+  }
+  main .container-calculator .card-calculator {
+    max-width: 56.4rem;
+    grid-row: 3/-1;
+    grid-column: 7/-1;
+  }
+  main .container-calculator .card-calculator .card-calculator__system-measurement p {
+    width: 23.8rem;
+  }
+  main .container-calculator .card-calculator .card-calculator__data div {
+    flex-direction: column;
+  }
+  main .container-calculator .card-calculator .card-score div h2 {
+    font-size: 6.4rem;
+  }
+  main .container-calculator .card-calculator .card-score .card-score__paragraph {
+    max-width: 20.6rem;
+  }
+  main .container-description-BMI {
+    position: relative;
+    align-items: flex-end;
+    gap: 13.1rem;
+    max-width: 116rem;
+    margin: 3rem auto;
+    overflow: visible;
+  }
+  main .container-description-BMI::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    width: 8.5rem;
+    height: 20rem;
+    right: 5%;
+    background-image: url("../assets/images/pattern-curved-line-left.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
+  }
+  main .container-description-BMI .card-result-means {
+    max-height: 30.9rem;
+    min-width: 48.1rem;
+  }
+  main .container-description-BMI .card-result-means .card-result-means__title {
+    font-size: 4.8rem;
+  }
+  main .health-tips {
+    flex-direction: row;
+  }
+  main .limitations-Bmi {
+    display: grid;
+    gap: 0;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    padding: 0;
+    max-width: 116rem;
+    margin: 0 auto;
+    margin-bottom: 6rem;
+  }
+  main .limitations-Bmi .card-info-limitations {
+    text-align: left;
+    grid-column: 1/7;
+    grid-row: 1/4;
+    max-width: 52.4rem;
+  }
+  main .limitations-Bmi .card-info-limitations .card-info-limitations__paragraph {
+    text-align: left;
+  }
+  main .limitations-Bmi .characteristic {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    grid-column: 1/-1;
+    grid-row: 1/-1;
+  }
+  main .limitations-Bmi .characteristic::before {
+    content: "";
+    position: absolute;
+    top: 30%;
+    width: 9.4rem;
+    height: 12.2rem;
+    left: 15%;
+    background-image: url("../assets/images/pattern-curved-line-right.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
+  }
+  main .limitations-Bmi .characteristic .card-gender {
+    grid-column: 8/12;
+    grid-row: 1/5;
+  }
+  main .limitations-Bmi .characteristic .card-age {
+    grid-column: 5/9;
+    grid-row: 5/9;
+  }
+  main .limitations-Bmi .characteristic .card-muscle {
+    grid-column: 9/-1;
+    grid-row: 5/9;
+  }
+  main .limitations-Bmi .characteristic .card-pregnancy {
+    grid-column: 3/7;
+    grid-row: 9/-1;
+  }
+  main .limitations-Bmi .characteristic .card-race {
+    grid-column: 7/11;
+    grid-row: 9/-1;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

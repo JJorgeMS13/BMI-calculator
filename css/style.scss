@@ -1,0 +1,683 @@
+@font-face {
+    font-family: "Inter", sans-serif;
+    src: url('../assets/fonts/Inter-VariableFont_slnt\,wght.ttf');
+}
+
+$blue: #345FF6;
+$gunmetal: #253347;
+$dark-electric-blue: #5E6E85;
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+html {
+    font-size: 62.5%;
+}
+body {
+    font-family: "Inter", sans-serif;
+    font-size: 1.6rem;
+}
+/* Placehorder para poner estilos genericos a los input */
+%input-style {
+    border: 1px solid $dark-electric-blue;
+    border-radius: 1.2rem;
+    padding: 2rem 2.4rem;
+    background-color: white;
+    height: 6.9rem;
+    transition: border-color 0.3s ease;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 7.2rem;
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 64rem;
+        background-image: linear-gradient(to bottom right, #D6FCFE, #D6E6FE);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        border-radius: 0 0 3.5rem 3.5rem;
+        z-index: -1;
+    }
+
+    .container-calculator {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2.4rem;
+        margin: 0 2.4rem;
+    
+        .logo {
+            margin-top: 2.4rem;
+            width: 4rem;
+            height: 4rem;
+    
+            img {
+                height: 100%;
+                width: 100%;
+            }
+        }
+
+        .card-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2.4rem;
+
+            .card-info__title {
+                color: $gunmetal;
+                text-align: center;
+                font-size: 4.8rem;
+                font-weight: 600;
+            }
+
+            .card-info__paragraph {
+                color: $dark-electric-blue;
+                font-weight: 400;
+            }
+        }
+
+        .card-calculator {
+            display: flex;
+            flex-direction: column;
+            gap: 2.4rem;
+            background-color: white;
+            border-radius: 1.6rem;
+            padding: 2.4rem;
+            box-shadow: 16px 32px 56px rgba(143, 174, 207, .25);
+    
+            .card-calculator__title {
+                color: $gunmetal;
+                font-size: 2.4rem;
+                font-weight: 600;
+            }
+    
+            .card-calculator__system-measurement {
+                border: none;
+                display: flex;
+                gap: 2.4rem;
+    
+                legend {
+                    position: absolute;
+                    width: .1rem;
+                    height: .1rem;
+                    padding: 0;
+                    margin: -1px;
+                    overflow: hidden;
+                    clip: rect(0, 0, 0, 0);
+                    border: 0;
+                }
+    
+                p {
+                    display: flex;
+                    align-items: center;
+                    gap: 1.8rem;
+                    width: 12.8rem;
+    
+                    label {
+                        color: $gunmetal;
+                        font-size: 1.6rem;
+                        font-weight: 600;
+                    }
+    
+                    input[type="radio"] {
+                        appearance: none;
+                        padding: 0;
+                        border: 1px solid $dark-electric-blue;
+                        border-radius: 50%;
+                        height: 3.1rem;
+                        width: 3.1rem;
+                        outline: none;
+                        position: relative;
+                        transition: border-color 0.3s ease;
+
+                        &:focus, &:hover {
+                            border-color: $blue;
+                            background-color: #D8E2E7;
+                            cursor: pointer;
+                        }
+                    }
+    
+                    input[type="radio"]:checked {
+                        border: none;
+                        background-color:  #D8E2E7;
+    
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            width: 1.5rem;
+                            height: 1.5rem;
+                            background-color: $blue;
+                            border-radius: 50%;
+                        }
+                    }
+                }
+            }
+    
+            .card-calculator__data {
+                display: flex;
+                gap: 1.6rem;
+                flex-direction: column;
+                div {
+                    display: flex;
+                    gap: 1rem;
+                    p {
+                        display: flex;
+                        flex-direction: column;
+                        gap: .8rem;
+        
+                        label {
+                            color: $dark-electric-blue;
+                            font-size: 1.4rem;
+                            font-weight: 400;
+                        }
+        
+                        .input-group {
+                            display: flex;
+                            gap: 2.4rem;
+                            @extend %input-style;
+    
+                            &:focus-within, &:hover {
+                                border: 2px solid $blue;
+                                cursor: pointer;
+                              }
+        
+                            input {
+                                border: none;
+                                outline: none;
+                                color: $gunmetal;
+                                font-size: 2.4rem;
+                                font-weight: 600;
+                                width: 100%;
+                            }
+        
+                            span {
+                                color: $blue;
+                                font-size: 2.4rem;
+                                font-weight: 600;
+                            }
+                        }
+                    }
+                }
+    
+            }
+    
+            .card-score {
+                background-color: $blue;
+                border-radius: 1.6rem;
+                color: white;
+                display: flex;
+                flex-direction: column;
+                gap: 2.4rem;
+                padding: 3.2rem;
+    
+                div {
+                    display: flex;
+                    flex-direction: column;
+                    gap: .8rem;
+    
+                    .card-score__title {
+                        font-size: 1.6rem;
+                        font-weight: 600;
+                    }
+                    h2 {
+                        font-size: 4.8rem;
+                        font-weight: 600;
+                    }
+                }
+    
+                .card-score__paragraph {
+                    font-size: 1.6rem;
+                    font-weight: 400;
+                    line-height: 150%;
+                }
+            }
+        }
+    }
+
+    .container-description-BMI {
+        display: flex;
+        flex-direction: column;
+        gap: 4.8rem;
+
+        .card-img {
+            width: 100%;
+            height: 35.439rem;
+            figure {
+                width: 100%;
+                height: 100%;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+
+        .card-result-means {
+            display: flex;
+            flex-direction: column;
+            gap: 3.2rem;
+            margin: 0 2.8rem;
+
+            .card-result-means__title {
+                color: $gunmetal;
+                font-size: 3.2rem;
+                font-weight: 600;
+            }
+
+            .card-result-means__description {
+                color: $dark-electric-blue;
+                line-height: 150%;
+                letter-spacing: 2%;
+                font-size: 1.6rem;
+                font-weight: 400;
+            }
+        }
+    }
+
+    .health-tips {
+        background: linear-gradient(to bottom right, rgba(214, 252, 254, .40), rgba(214, 230, 254, .20));
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+        padding: 5.6rem 2.4rem;
+
+        .health-tips-card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 3.2rem;
+
+            .health-tips-card__icon {
+                width: 6.4rem;
+                height: 6.4rem;
+            }
+
+            .health-tips-card__info {
+                display: flex;
+                flex-direction: column;
+                gap: 2.4rem;
+
+                .health-tips-card__title {
+                    font-size: 2.4rem;
+                    font-weight: 600;
+                    color: $gunmetal;
+                }
+
+                .health-tips-card__paragraph {
+                    color: $dark-electric-blue;
+                    line-height: 150%;
+                    font-size: 1.6rem;
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+
+    .limitations-Bmi {
+        display: flex;
+        flex-direction: column;
+        gap: 5.6rem;
+        padding: 2.4rem;
+
+        .card-info-limitations {
+            display: flex;
+            flex-direction: column;
+            gap: 3.2rem;
+
+            .card-info-limitations__title {
+                color: $gunmetal;
+                font-size: 3.2rem;
+                font-weight: 600;
+                line-height: 110%;
+            }
+
+            .card-info-limitations__paragraph {
+                text-align: center;
+                color: $dark-electric-blue;
+                font-size: 1.6rem;
+                font-weight: 400;
+                line-height: 150%;
+            }
+        }
+
+        .characteristic {
+            display: flex;
+            flex-direction: column;
+            gap: 1.6rem;
+
+            .characteristic-card {
+                display: flex;
+                flex-direction: column;
+                gap: 1.6rem;
+                background-color: white;
+                border-radius: 1.6rem;
+                padding: 2.4rem;
+                box-shadow: 16px 32px 56px 0 rgba(143, 174, 207, .25);
+
+                .characteristic-card__header {
+                    align-items: center;
+                    display: flex;
+                    gap: 1.6rem;
+
+                    .characteristic-card__icon {
+                        width: 3.2rem;
+                        height: 3.2rem;
+                    }
+
+                    .characteristic-card__title {
+                        color: &$gunmetal;
+                        font-size: 2rem;
+                        font-weight: 600;
+                    }
+                }
+
+                .characteristic-card__paragraph {
+                    color: $dark-electric-blue;
+                    font-size: 1.6rem;
+                    font-weight: 400;
+                    line-height: 150%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 48rem) {
+    main {
+        .container-calculator {
+            margin: 0 5rem;
+
+            .logo {
+                margin-top: 4rem;
+            }
+            .card-info {
+                text-align: center;
+                align-items: center;
+
+                margin-bottom: 2rem;
+                .card-info__title {
+                    width: 58%;
+                }
+            }
+
+            .card-calculator {
+                gap: 3.2rem;
+                padding: 3.2rem;
+                .card-calculator__data {
+                    flex-direction: row;
+                }
+                .card-score {
+                    align-items: center;
+                    border-radius: 1.6rem 99.9rem 99.9rem  1.6rem;
+                    flex-direction: row;
+
+                    div {
+                        width: 90%;
+                    }
+                }
+            }
+        }
+
+        .container-description-BMI {
+            flex-direction: row;
+            gap: 7.5rem;
+
+            .card-img {
+                margin-left: -7rem;
+            }
+
+            .card-result-means {
+                margin: 0;
+                margin-right: 4rem;
+                max-width: 33.1rem;
+            }
+        }
+
+        .limitations-Bmi {
+            text-align: center;
+            padding: 4.1rem;
+
+            .characteristic {
+                display: grid;
+                row-gap: 2.4rem;
+                column-gap: 1.5rem;
+                grid-template-columns: repeat(12, 1fr);
+                grid-template-rows: repeat(12, 1fr);
+
+                .card-gender {
+                    grid-column: 1 / 7;
+                    grid-row: 1 / 5;
+                }
+
+                .card-age {
+                    grid-column: 7 / -1;
+                    grid-row: 1 / 5;
+                }
+
+                .card-muscle {
+                    grid-column: 1 / 7;
+                    grid-row: 5 / 9;
+                }
+
+                .card-pregnancy {
+                    grid-column: 7 / -1;
+                    grid-row: 5 / 9;
+                }
+
+                .card-race {
+                    grid-column: 4 / 10;
+                    grid-row: 9 / -1;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 64rem) {
+    main {
+
+        .container-description-BMI {
+            margin: 3rem;
+            .card-img {
+                margin-left: 0;
+            }
+        }
+
+        .health-tips {
+            border-radius: 3.5rem;
+            margin: 3rem;
+        }
+    }
+}
+
+@media screen and (min-width: 90rem) {
+    main {
+        &::before {
+            height: 73.7rem;
+            width: 97.8rem;
+        }
+        .container-calculator {
+            display: grid;
+            gap: 0;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: repeat(12, 1fr);
+            max-width: 127.6rem;
+            margin: 0;
+            margin-bottom: 10rem;
+
+            .logo {
+                margin: 0;
+                margin-left: 5rem;
+                grid-row: 2 / 3;
+                grid-column: 1 / 2;
+            }
+            .card-info {
+                max-width: 56.4rem;
+                margin-left: 5rem;
+                gap: 3.5rem;
+                align-items: flex-start;
+                text-align: left;
+                grid-row: 4 / -1;
+                grid-column: 1 / 7;
+
+                .card-info__title {
+                    text-align: left;
+                    font-size: 6.4rem;
+                    width: 90%;
+                }
+
+                .card-info__paragraph {
+                    max-width: 44.3rem;
+                }
+            }
+            .card-calculator {
+                max-width: 56.4rem;
+                grid-row: 3 / -1;
+                grid-column: 7 / -1;
+
+                .card-calculator__system-measurement {
+
+                    p {
+                         width: 23.8rem;
+                      }
+                }
+
+                .card-calculator__data {
+                    div {
+                        flex-direction: column;
+                    }
+                }
+
+                .card-score {
+                    div {
+                        h2 {
+                            font-size: 6.4rem;
+                        }
+                    }
+
+                    .card-score__paragraph {
+                        max-width: 20.6rem;
+                    }
+                }
+            }
+        }
+
+        .container-description-BMI {
+            position: relative;
+            align-items: flex-end;
+            gap: 13.1rem;
+            max-width: 116rem;
+            margin: 3rem auto;
+            overflow: visible;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                width: 8.5rem;
+                height: 20rem;
+                right: 5%;
+                background-image: url('../assets/images/pattern-curved-line-left.svg');
+                background-size: cover;
+                background-repeat: no-repeat;
+                z-index: -1;
+            }
+
+            .card-result-means {
+                max-height: 30.9rem;
+                min-width: 48.1rem;
+
+                .card-result-means__title {
+                    font-size: 4.8rem;
+                }
+            }
+            
+        }
+
+        .health-tips {
+            flex-direction: row;
+        }
+
+        .limitations-Bmi {
+            display: grid;
+            gap: 0;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: repeat(12, 1fr);
+            padding: 0;
+            max-width: 116rem;
+            margin: 0 auto;
+            margin-bottom: 6rem;
+
+            .card-info-limitations {
+                text-align: left;
+                grid-column: 1 / 7;
+                grid-row: 1 / 4;
+                max-width: 52.4rem;
+
+                .card-info-limitations__paragraph {
+                    text-align: left;
+                }
+            }
+
+            .characteristic {
+                position: relative;
+                display: grid;
+                grid-template-columns: repeat(12, 1fr);
+                grid-template-rows: repeat(12, 1fr);
+                grid-column: 1 / -1;
+                grid-row: 1 / -1;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 30%;
+                    width: 9.4rem;
+                    height: 12.2rem;
+                    left: 15%;
+                    background-image: url('../assets/images/pattern-curved-line-right.svg');
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    z-index: -1;
+                }
+    
+                .card-gender {
+                    grid-column: 8 / 12;
+                    grid-row: 1 / 5;
+                }
+
+                .card-age {
+                    grid-column: 5 / 9;
+                    grid-row: 5 / 9;           
+                }
+        
+                .card-muscle {
+                    grid-column: 9 / -1;
+                    grid-row: 5 / 9;            
+                }
+        
+                .card-pregnancy {
+                    grid-column: 3 / 7;
+                    grid-row: 9 / -1; 
+                }
+        
+                .card-race {
+                    grid-column: 7 / 11;
+                    grid-row: 9 / -1; 
+                }
+            }
+        }
+    }
+}
